@@ -1,6 +1,6 @@
 **XTREME Rust Port Scanner**
 
-Made to be as small and fast as possible. 
+Made with the intention to be as small and fast as possible. 
 Intended for embedded devices where storage is a concern and speed is needed to get on/off target quickly.  
 
 **How to run or build** 
