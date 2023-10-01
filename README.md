@@ -7,7 +7,8 @@ Intended for embedded devices where storage is a concern and speed is needed to 
 ```
 "cargo run -- -a 192.168.1.1 -p 22,80,443,8080" to run normally.
 "cargo run -- -a 192.168.1.1 -p 1-1024" 
-"cargp run -- -a 192.168.1.1 -p 22 
+"cargp run -- -a 192.168.1.1 -p 22
+
 "cargo build --release" to build and optimize size of the executable.
 ```
 
