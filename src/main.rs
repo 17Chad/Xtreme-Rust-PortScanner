@@ -23,6 +23,7 @@ pub struct Arguments {
     #[bpaf(long, short, argument("Address"))]
     /// The address that you want to scan. Must be a valid IPv4 address.
     pub address: IpAddr,
+    
     #[bpaf(long, short('p'), argument("Port"))]
     /// The port(s) to scan. Specify a single port (e.g., 80), a list of ports (e.g., 80,22,443,8080),
     /// or a range of ports (e.g., 1-1024).
@@ -59,7 +60,7 @@ fn parse_ports(ports: &str) -> Vec<u16> {
 // Function to perform port scan on a single port.
 async fn scan_port(port_sender: Sender<u16>, port: u16, addr: IpAddr) {
     // Print a message indicating the scanning of the current port.
-    println!("Scanning {}:{}...", addr, port);
+    // println!("Scanning {}:{}...", addr, port);
 
     match TcpStream::connect(format!("{}:{}", addr, port)).await {
         Ok(_) => {
@@ -68,9 +69,8 @@ async fn scan_port(port_sender: Sender<u16>, port: u16, addr: IpAddr) {
             io::stdout().flush().unwrap();
             port_sender.send(port).unwrap();
         }
-        Err(e) => {
-            // If the connection is unsuccessful, print or log the error for debugging.
-            eprintln!("Error connecting to port {}: {}", port, e);
+        Err(_) => {
+            //pass
         }
     }
 }
@@ -82,6 +82,8 @@ async fn main() {
 
     // Parse the specified ports.
     let ports_to_scan = parse_ports(&opts.ports);
+    
+    println!("Scanning {} ports {} ...", &opts.address, &opts.ports);
 
     // Create a channel for sending open port numbers.
     let (port_sender, port_receiver) = channel();
