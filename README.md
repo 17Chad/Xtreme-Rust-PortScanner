@@ -21,4 +21,4 @@ Available options:
 
 ```
 
-**To cross-compile in Rust, please see this guide: https://github.com/rust-cross/rust-musl-cross/tree/main **
+** To cross-compile in Rust, please see this guide: https://github.com/rust-cross/rust-musl-cross/tree/main **
