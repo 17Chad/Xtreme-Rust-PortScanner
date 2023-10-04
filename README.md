@@ -10,6 +10,15 @@ Intended for embedded devices where storage is a concern and speed is needed to 
 "cargp run -- -a 192.168.1.1 -p 22
 
 "cargo build --release" to build and optimize size of the executable.
+
+Usage: -a Address -p Port
+
+Available options:
+    -a, --address <Address>  The address that you want to scan. Must be a valid IPv4 address.
+    -p, --ports <Port>  The port(s) to scan. Specify a single port (e.g., 80), a list of ports (e.g.,
+                        80,22,443,8080), or a range of ports (e.g., 1-1024).
+    -h, --help          Prints help information
+
 ```
 
 **To cross-compile for ARM, ARM64, MIPS (both big-endian and little-endian), TILE, PowerPC, etc you can use Rust's built-in support for cross-compilation targets. Here are the general steps to cross-compile for these architectures:**
